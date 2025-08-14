@@ -2,7 +2,7 @@
 
 ![Cypress](https://img.shields.io/badge/Cypress-E2E%20Testing-green?style=flat&logo=cypress) 
 ![Cucumber](https://img.shields.io/badge/Cucumber-BDD-blue?style=flat&logo=cucumber)
-![Node.js](https://img.shields.io/badge/Node.js-v14.x%20LTS-green?style=flat&logo=node.js)
+![Node.js](https://img.shields.io/badge/Node.js-v18.x%20LTS-green?style=flat&logo=node.js)
 ![QA Automation](https://img.shields.io/badge/QA%20Automation-Continuous%20Testing-orange?style=flat&logo=testing-library)
 ![License](https://img.shields.io/badge/License-MIT-brightgreen?style=flat)
 
@@ -13,7 +13,6 @@ Este repositório contém diferentes implementações de automação de testes E
 Sites usados nos exemplos:
 
 E-commerce (https://www.saucedemo.com)<br>
-Sistema bancário (https://barrigareact.wcaquino.me)
 
 ---
 
@@ -21,86 +20,42 @@ Sistema bancário (https://barrigareact.wcaquino.me)
 
 | Branch                               | Descrição                                                                                                  |                                                                                                       |
 |--------------------------------------|------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| **Main**                   |           Exemplo básico do cypress.                                                  | [link](https://github.com/caioandrian/cypress_e2e/tree/main)                                     |
-| **Cypress Nativo**  | Exemplo do cypress sem bdd.                                      | [link](https://github.com/caioandrian/cypress_e2e/tree/saucedemo-cypress-nativo)             |
-| **Cypress com BDD**                  | Exemplo do cypress usando cucumber, multi-reports html e page object.                        | [link](https://github.com/caioandrian/cypress_e2e/tree/cypress-cucumber-bdd)                    |
-| **Report para New Relic**  | Exemplo de integração do cypress chamando API do new relic. CI/CD                                        | [link](https://github.com/caioandrian/cypress_e2e/tree/report-to-newrelic)             |
+| **Main**                   |           Exemplo básico do cypress com integração BDD usando Cucumber.                                                  | [link](https://github.com/caioandrian/cypress_web_cucumber/tree/main)                                     |
 
 ---
 
-## ⚙️ Instalação e Execução do Projeto
+## 📂 Estrutura do Projeto
 
-Este guia ajudará você a instalar as ferramentas necessárias e executar o projeto de automação de testes. O Cypress é um framework de testes E2E que facilita a criação, execução e depuração de testes com uma abordagem moderna e interativa.
+O projeto está organizado da seguinte forma:
 
-### Requisitos
+- **cypress/e2e**: Contém os testes E2E escritos em Gherkin.
+- **cypress/pages**: Implementa o padrão Page Object Model para organizar o código de automação.
+- **cypress/plugins**: Configura plugins e pre-processadores, como o Cucumber.
+- **cypress/support**: Contém comandos customizados e configurações globais.
+- **cypress/config-files**: Arquivos de configuração para diferentes ambientes (hmg, prod).
 
-Antes de começar, certifique-se de ter o seguinte instalado:
+## 📦 Dependências e Scripts
 
-- **Node.js (versão LTS)** - [Download aqui](https://nodejs.org/en/)
-- **Visual Studio Code (VS Code)** - [Download aqui](https://code.visualstudio.com/download)
-- **Cypress** (Será instalado como dependência do projeto)
+O projeto utiliza as seguintes dependências principais:
 
-### 🚀 Passos de Instalação
+- `cypress`
+- `cypress-cucumber-preprocessor`
+- `cypress-mochawesome-reporter`
+- `cypress-xpath`
+- `cypress-file-upload`
 
-#### 1. Instalação do Node.js
+Scripts disponíveis:
 
-1. Acesse o [site oficial do Node.js](https://nodejs.org/en/) e baixe a versão LTS mais recente.
-2. Execute o instalador e siga as instruções clicando em `Next` até o final.
-3. Após a conclusão, confirme a instalação executando o comando abaixo no terminal:
+- `cy:open`: Abre o Cypress.
+- `cy:run-all`: Executa todos os testes no modo headless.
+- `cy:run-exemplo-saucedemo`: Executa testes específicos para o exemplo saucedemo.
 
-    ```bash
-    node -v
-    ```
+## ⚙️ Configurações e Plugins
 
-   Isso deve retornar a versão do Node.js instalada.
+O arquivo `cypress/plugins/index.js` configura o preprocessor do Cucumber e outros plugins como `cypress-mochawesome-reporter`. As configurações de ambiente são geridas através de arquivos JSON na pasta `config-files`.
 
-#### 2. Instalação do Visual Studio Code
+## 🛠️ Comandos Customizados
 
-1. Baixe e instale o **Visual Studio Code** [aqui](https://code.visualstudio.com/download).
-2. Execute o instalador, clique em `Next` até o final e depois em `Finish` para concluir a instalação.
-
-#### 3. Clonando o Repositório
-
-No terminal, execute os comandos abaixo para clonar este repositório e instalar as dependências:
-
-```bash
-git clone https://github.com/caioandrian/cypress_e2e.git
-cd cypress_e2e
-npm install
-```
-
-#### 4. Estrutura com Page Object
-
-📦 cypress_e2e  
- ┣ 📂 cypress  
- ┃ ┣ 📂 e2e                  
- ┃ ┃ ┣ 📂 spec              
- ┃ ┃ ┣ 📂 step_definitions    
- ┃ ┣ 📂 fixtures              
- ┃ ┣ 📂 pages                 
- ┃ ┣ 📂 plugins               
- ┃ ┣ 📂 run                   
- ┃ ┣ 📂 reports               
- ┃ ┣ 📂 support               
- ┣ 📜 cypress.json            
- ┣ 📜 package.json          
-
-
-#### 5. Extensões VS Code
-
-Lista de plugins que podem auxiliar no desenvolvimento da automação.
-
-- JavaScript (ES6) code snippets
-- Commit Message Editor - **Formatador de commits**
-- Markdown Preview Enhanced - **Visualizador de arquivos .md**
-- Prettier - Code formatter - **Formatador de código**
-- Material Icon Theme
-- Cucumber (Gherkin) Full Support
-- Cypress-cucumber-generator
-- Snippets and Syntax Highlight for Gherkin (Cucumber)
-- Bracket Pair Colorizer 2
-- Add Only
-- Cypress Snippets
-- ES6 Mocha Snippets
+Comandos customizados são definidos no arquivo `support/commands.js`, utilizando bibliotecas como `cypress-xpath` e `cypress-file-upload`.
 
 --- FIM ---
