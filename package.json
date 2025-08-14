@@ -1,7 +1,7 @@
 {
   "name": "cypress_e2e",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projeto de automação de testes E2E usando Cypress e Cucumber",
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open",
@@ -20,7 +20,7 @@
       "outputFolder": "cypress/reports/json"
     }
   },
-  "keywords": [],
+  "keywords": ["cypress", "cucumber", "automation", "testing", "e2e", "bdd", "pageobjects"],
   "author": "Caio Andrian",
   "license": "MIT",
   "devDependencies": {
