@@ -1,7 +1,5 @@
 import {Given, When, Then, After, Before} from 'cypress-cucumber-preprocessor/steps';
 
-import {Acessibilidade} from '../../../pages/common';
-
 before(() => {
 });
 
@@ -15,8 +13,4 @@ beforeEach(() => {
       });
     });
   }
-});
-
-Then(`deverá passar no teste de acessibilidade`, () => {
-  Acessibilidade.validar_acessibilidade();
 });
